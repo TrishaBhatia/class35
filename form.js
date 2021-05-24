@@ -2,32 +2,43 @@ class Form
 {
     constructor()
     {
-
+        this.title=createElement('h1');
+        this.inp=createInput('').attribute("placeholder","name");
+        this.button=createButton('Play');
+        this.greeting=createElement('h3');
+    }
+    hide ()
+    {
+        this.inp.hide();
+            this.button.hide();
+            this.title.hide();
+            this.greeting.hide();
     }
      display()
      {
-         var title=createElement('h1');
-         title.html('Car Racing Game');
-         title.style("color","blue");
-         title.position(130,0);
+        
+         this.title.html('Car Racing Game');
+         this.title.style("color","blue");
+         this.title.position(130,0);
 
-         var inp=createInput('').attribute("placeholder","name");
-         inp.position(130,160);
-         var button=createButton('Play');
-         button.position(250,200);
+         
+         this.inp.position(130,160);
+        
+         this.button.position(250,200);
 
-         var greeting=createElement('h3');
-         button.mousePressed=()=>
+         
+         this.button.mousePressed(()=>
          {
-           inp.hide();
-            button.hide();
-            var n=inp.value();
+            this.inp.hide();
+            this.button.hide();
+            player.name= this.inp.value();
             playerCount+=1;
-            player.update(n);
+            player.index=playerCount;
+            player.update();
             player.updateCount(playerCount);
-            greeting.html('Hello'+n);
-            greeting.style("color","blue");
-         greeting.position(130,180);
-         }
+            this.greeting.html('Hello'+player.name);
+            this.greeting.style("color","blue");
+            this.greeting.position(130,180);
+         })
      }
 }
